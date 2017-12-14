@@ -1,16 +1,17 @@
 # Load AddressBase CSV files into PostgreSQL
 
-Download the single zip file of non-5km CSV files from OrdnanceSurvey.  Unzip
-them into `cache/AddressBase/csv/`
+Download the single zip file of non-5km CSV files from OrdnanceSurvey.
+Providing you are within the repo, unzip
+the files into `cache/AddressBase/csv/`
 
 Each file contains records of different types, with different numbers of
 columns.  The type is given by the first column.  Separate them by type, and
-combine the types into single files, using `awk`.  It will take minutes, not
-hours.
+combine the types into single files, using the `awk` function.  It will take minutes, not hours.
+(If on mac, use/brew install the 'gawk' function)
 
 ```sh
 mkdir by_type
-awk -F, '{print > "by_type/"$1".csv"}' data/*.csv
+for f in cache/AddressBase/csv/*.csv; do gawk -F, '{print > "by_type/"$1".csv"}' "$f"; done
 ```
 
 Create tables in Postgres, and import the data into them.  This should take only

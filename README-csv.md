@@ -10,8 +10,9 @@ combine the types into single files, using the `awk` function.  It will take min
 (If on mac, use/brew install the 'gawk' function)
 
 ```sh
-mkdir by_type
-for f in cache/AddressBase/csv/*.csv; do gawk -F, '{print > "by_type/"$1".csv"}' "$f"; done
+# Assuming you are in the root of the addressbase-data repo
+mkdir cache/AddressBase/csv/by_type
+for f in cache/AddressBase/csv/*.csv; do gawk -F, '{print > "cache/AddressBase/csv/by_type/"$1".csv"}' "$f"; done
 ```
 
 Create tables in Postgres, and import the data into them.  This should take only

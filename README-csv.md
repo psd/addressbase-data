@@ -40,7 +40,16 @@ psql -d addressbase -c "\copy streetdescriptiveidentifier FROM 'cache/AddressBas
 ```
 
 ```pgsql
+CREATE INDEX ON deliverypointaddress (uprn);
+CREATE INDEX ON deliverypointaddress (postcode);
+CREATE INDEX ON deliverypointaddress (post_town);
+CREATE INDEX ON deliverypointaddress (thoroughfare);
+CREATE INDEX ON deliverypointaddress (dependent_thoroughfare);
+CREATE INDEX ON deliverypointaddress (building_number);
+CREATE INDEX ON deliverypointaddress (building_name);
+CREATE INDEX ON deliverypointaddress (sub_building_name);
 CREATE INDEX ON deliverypointaddress (organisation_name);
+CREATE INDEX ON deliverypointaddress (department_name);
 CREATE INDEX ON basiclandpropertyunit (uprn);
 CREATE INDEX ON landpropertyidentifier (uprn, usrn);
 CREATE INDEX ON streetdescriptiveidentifier (usrn);
